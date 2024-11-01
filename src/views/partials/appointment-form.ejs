@@ -1,0 +1,87 @@
+<section>
+   <div class="container">
+      <h2 class="text-center my-4">Đặt Lịch Khám</h2>
+      <form action="/appointments" method="POST">
+         <h4>Thông Tin Người Đặt Lịch:</h4>
+         <div class="row mb-3">
+            <div class="col-md-6">
+               <label for="name">Họ và Tên:</label>
+               <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="col-md-6">
+               <label for="dob">Ngày Sinh:</label>
+               <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+         </div>
+         <div class="row mb-3">
+            <div class="col-md-6">
+               <label for="phone">Số Điện Thoại:</label>
+               <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+            <div class="col-md-6">
+               <label for="email">Địa Chỉ Email:</label>
+               <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+         </div>
+         <div class="row mb-3">
+            <div class="col-md-12">
+               <label for="address">Địa Chỉ Nơi Ở:</label>
+               <input type="text" class="form-control" id="address" name="address" required>
+            </div>
+         </div>
+
+         <h4>Thông Tin Khám Bệnh:</h4>
+         <div class="row mb-3">
+            <div class="col-md-6">
+               <label for="appointment_date">Ngày Mong Muốn Khám:</label>
+               <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
+            </div>
+            <div class="col-md-6">
+               <label for="appointment_time">Giờ Mong Muốn Khám:</label>
+               <input type="time" class="form-control" id="appointment_time" name="appointment_time" required>
+            </div>
+         </div>
+         <div class="mb-3">
+            <label for="reason">Lý Do Khám:</label>
+            <input type="text" class="form-control" id="reason" name="reason" required>
+            <div class="form-check">
+               <input type="checkbox" class="form-check-input" id="general_checkup" name="reason_type"
+                  value="Khám tổng quát">
+               <label class="form-check-label" for="general_checkup">Khám tổng quát</label>
+            </div>
+            <div class="form-check">
+               <input type="checkbox" class="form-check-input" id="cavity_check" name="reason_type" value="Răng sâu">
+               <label class="form-check-label" for="cavity_check">Răng sâu</label>
+            </div>
+            <div class="form-check">
+               <input type="checkbox" class="form-check-input" id="braces_check" name="reason_type" value="Niềng răng">
+               <label class="form-check-label" for="braces_check">Niềng răng</label>
+            </div>
+            <div class="form-check">
+               <input type="checkbox" class="form-check-input" id="other_check" name="reason_type" value="Khác">
+               <label class="form-check-label" for="other_check">Khác (vui lòng ghi rõ):</label>
+               <input type="text" class="form-control mt-1" id="other_reason" name="other_reason">
+            </div>
+         </div>
+         <div class="mb-3">
+            <label for="medical_history">Lịch Sử Bệnh Lý (nếu có):</label>
+            <textarea class="form-control" id="medical_history" name="medical_history" rows="3"></textarea>
+         </div>
+
+         <h4>Xác Nhận Đặt Lịch:</h4>
+         <div class="form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="confirmation" name="confirmation" required>
+            <label class="form-check-label" for="confirmation">Tôi xác nhận rằng thông tin trên là chính xác và tôi đồng
+               ý với các điều khoản của phòng khám.</label>
+         </div>
+         <div class="mb-3">
+            <label for="signature">Chữ Ký:</label>
+            <input type="text" class="form-control" id="signature" name="signature" required>
+         </div>
+
+         <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary bg-light-blue bd-lightblue">Đặt Lịch Ngay</button>
+         </div>
+      </form>
+   </div>
+</section>
