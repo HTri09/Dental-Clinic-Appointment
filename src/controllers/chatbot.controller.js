@@ -1,44 +1,23 @@
 const { DichVu, LoaiDichVu, BacSi, LichLamViec, LichHen, BenhNhan, ChiTietLichHen, sequelize } = require('../models/index')
+const { runChat } = require('../../gemini')
 
 
 module.exports = {
-    getAll: async (req, res) => {
+    chat: async (req, res) => {
         try {
-            const model = req.params.model
-            const Model = sequelize.models[model]
-            
-            if (!Model) {
-                return res.status(404).json({ message: 'Model not found' })
+            const contents = req.body?.contents;
+            const userMessage = contents?.parts?.text
+
+            if (!userMessage) {
+                return res.status(400).json({ error: 'Invalid request body' });
             }
-            
-            const results = await Model.findAll()
-            res.status(200).json(results)
+    
+            const response = await runChat(userMessage);
+            res.status(200).json({ response });
         } catch (error) {
-            res.status(500).json(error)
-        }
-    },
-
-    getAllBacSiInfo: async (req, res) => {
-        try {
-            const fullBacSiInfo = (await sequelize.query(`EXEC DanhSachBacSi`))[0];
-            const info = fullBacSiInfo.map(item => {
-                return {
-                    ma: item.ma,
-                    ma_nguoi_dung: item.ma_nguoi_dung,
-                    ho_ten: item.ho_ten,
-                    gioi_tinh: item.gioi_tinh,
-                    trang_thai: item.trang_thai,
-                    ma_chuyen_khoa: item.ma_chuyen_khoa,
-                    ten_chuyen_khoa: item.ten_chuyen_khoa,
-                }
-            })
-
-            res.status(200).json(info.filter(item => item.trang_thai === 1));
-        } catch (error) {
-            console.error(error);
+            console.error('Error in chat endpoint:', error);
             res.status(500).json({ error: 'Internal Server Error' });
         }
     }
 
-    
 }

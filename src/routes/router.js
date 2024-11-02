@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const { chatbotController, appoinmentController } = require('../controllers/index')
+
+const { chatbotController, appoinmentController, retrieveDataController } = require('../controllers/index')
 const { sequelize, DichVu, LoaiDichVu } = require('../models/index')
 
 // View
@@ -10,10 +11,13 @@ router.get('/', (req, res) => {
     })
 })
 
+// Retrieve Data
+router.get('/api/getAll/:model', retrieveDataController.getAll)
+router.get('/api/getAllBacSiInfo', retrieveDataController.getAllBacSiInfo)
+
 
 // Chatbot
-router.get('/api/getAll/:model', chatbotController.getAll)
-router.get('/api/getAllBacSiInfo', chatbotController.getAllBacSiInfo)
+router.post('/api/chat', chatbotController.chat)
 
 // Appointment
 
