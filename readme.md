@@ -12,11 +12,13 @@ Hệ Thống Đặt Lịch Hẹn Nha Khoa là một ứng dụng web được th
 
 ## Hướng Dẫn Tạo Tệp .env
 
-Để cấu hình ứng dụng, bạn cần tạo tệp `.env` chứa các biến môi trường. Làm theo các bước sau để tạo tệp `.env` từ tệp mẫu `.env.example`:
+- Rename `.env.example` to `.env`
+- Sửa các giá trị cho giống với tài khoản đăng nhập database
 
 ## Cài Đặt
 
-**Yêu cầu môi trường: Node.js 18.20.4**
+- **Yêu cầu môi trường: Node.js 18.20.4**
+- **SQL Server**
 
 Để cài đặt và chạy dự án trên máy tính của bạn, hãy làm theo các bước sau:
 
@@ -36,9 +38,3 @@ Hệ Thống Đặt Lịch Hẹn Nha Khoa là một ứng dụng web được th
     ```bash
     npm start
     ```
-
-### Bước 1: Tạo tệp .env từ tệp mẫu
-Sử dụng lệnh sau trong terminal:
-
-```bash
-cp .env.example .env
