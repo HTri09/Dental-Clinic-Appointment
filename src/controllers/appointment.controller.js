@@ -17,9 +17,10 @@ module.exports = {
 
             const lichHen = await LichHen.create({
                 tuoi: calculateAge(body.ngay_sinh),
-                ghi_chu: body.ghi_chu.toString() + ' ' + body.buoi_hen,
+                ghi_chu: body.ghi_chu.toString(),
                 ma_benh_nhan: benhNhan.ma_benh_nhan,
-                ngay_hen: body.ngay_hen,
+                ngay_hen: body.ngay_hen ? new Date(body.ngay_hen) : null,
+                ca: body.buoi_hen === 0 || body.buoi_hen === 1 ? body.buoi_hen : null,
                 trang_thai: 0,
             })
 
@@ -37,11 +38,11 @@ module.exports = {
                 }
             })
         } catch (error) {
-            console.error('Error details:', error.errors); // Log chi tiết lỗi
+            console.error('Error details:', error); // Log chi tiết lỗi
             res.status(500).json({
                 status: 'error',
                 message: 'Có lỗi xảy ra khi tạo lịch hẹn',
-                errors: error.errors
+                errors: error
             });
         }
     }

@@ -37,18 +37,18 @@
          <h4>Thông tin khám bệnh:</h4>
          <div class="row mb-3">
             <div class="col-md-6">
-               <label for="appointment_date">Ngày mong muốn khám: <span class="text-danger">*</span></label>
+               <label for="appointment_date">Ngày mong muốn khám:</label>
                <input type="date" class="form-control" id="appointment_date" name="ngay_hen">
                <span class="text-danger" id="appointmentDateError"></span>
             </div>
             <div class="col-md-6">
                <label>Buổi mong muốn khám: <span class="text-danger"></span></label>
                <div class="form-check">
-                  <input type="radio" class="form-check-input" id="morning_session" name="buoi_hen" value="Sáng">
+                  <input type="radio" class="form-check-input" id="morning_session" name="buoi_hen" value="1">
                   <label class="form-check-label" for="morning_session">Sáng (08:00 - 12:00)</label>
                </div>
                <div class="form-check">
-                  <input type="radio" class="form-check-input" id="afternoon_session" name="buoi_hen" value="Chiều">
+                  <input type="radio" class="form-check-input" id="afternoon_session" name="buoi_hen" value="2">
                   <label class="form-check-label" for="afternoon_session">Chiều (13:00 - 17:00)</label>
                </div>
             </div>
@@ -117,11 +117,12 @@
       }
 
       const appointmentDateInput = document.getElementById('appointment_date');
-      const appointmentDate = new Date(appointmentDateInput.value);
-      const today = new Date();
-      if (appointmentDate <= today) {
-         document.getElementById('appointmentDateError').innerText = 'Ngày hẹn không hợp lệ';
-         return;
+      if (appointmentDateInput) {
+         const appointmentDate = new Date(appointmentDateInput.value);
+         if (appointmentDate < new Date()) {
+            document.getElementById('appointmentDateError').innerText = 'Ngày hẹn không hợp lệ';
+            return;
+         }
       }
 
       const data = {

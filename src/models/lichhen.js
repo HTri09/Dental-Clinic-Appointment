@@ -16,29 +16,34 @@ module.exports = (sequelize, DataTypes) => {
   LichHen.init({
     ma_lich_hen: {
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       primaryKey: true,
-      autoIncrement: true
+      allowNull: false,
     },
     ghi_chu: {
-      type: DataTypes.STRING,
-      allowNull: true
+      type: DataTypes.TEXT, // Tương đương với NVARCHAR(MAX)
+      allowNull: true,
     },
     trang_thai: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
+      type: DataTypes.BOOLEAN, // Tương đương với BIT
+      allowNull: false,
     },
     ngay_hen: {
-      type: DataTypes.DATEONLY,
-      allowNull: false
+      type: DataTypes.DATEONLY, // Tương đương với DATE
+      allowNull: true,
+    },
+    ca: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
     ma_nguoi_dung: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
     },
     ma_benh_nhan: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'LichHen',
