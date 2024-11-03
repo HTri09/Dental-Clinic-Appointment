@@ -40,5 +40,4 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-// console.log(Object.keys(db.BacSi))
 module.exports = db;

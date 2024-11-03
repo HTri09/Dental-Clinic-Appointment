@@ -1,87 +1,164 @@
 <section>
    <div class="container">
-      <h2 class="text-center my-4">Đặt Lịch Khám</h2>
-      <form action="/appointments" method="POST">
-         <h4>Thông Tin Người Đặt Lịch:</h4>
+      <h2 class="text-center my-4">Đặt lịch khám</h2>
+      <div id="notification" class="alert d-none" role="alert"></div> <!-- Thêm phần thông báo -->
+      <form action="/api/lichhen" method="POST" id="appointmentForm">
+         <h4>Thông tin cá nhân:</h4>
          <div class="row mb-3">
             <div class="col-md-6">
-               <label for="name">Họ và Tên:</label>
-               <input type="text" class="form-control" id="name" name="name" required>
+               <label for="name">Họ và tên: <span class="text-danger">*</span></label>
+               <input type="text" class="form-control" id="name" name="ho_ten" required>
+               <span class="text-danger" id="nameError"></span>
             </div>
             <div class="col-md-6">
-               <label for="dob">Ngày Sinh:</label>
-               <input type="date" class="form-control" id="dob" name="dob" required>
+               <label for="dob">Ngày sinh:</label>
+               <input type="date" class="form-control" id="dob" name="ngay_sinh">
+               <span class="text-danger" id="dobError"></span>
             </div>
          </div>
          <div class="row mb-3">
             <div class="col-md-6">
-               <label for="phone">Số Điện Thoại:</label>
-               <input type="tel" class="form-control" id="phone" name="phone" required>
+               <label for="phone">Số điện thoại: <span class="text-danger">*</span></label>
+               <input type="tel" class="form-control" id="phone" name="so_dien_thoai" required>
+               <span class="text-danger" id="phoneError"></span>
             </div>
             <div class="col-md-6">
-               <label for="email">Địa Chỉ Email:</label>
-               <input type="email" class="form-control" id="email" name="email" required>
+               <label for="email">Địa chỉ email:</label>
+               <input type="email" class="form-control" id="email" name="email">
             </div>
          </div>
          <div class="row mb-3">
             <div class="col-md-12">
-               <label for="address">Địa Chỉ Nơi Ở:</label>
-               <input type="text" class="form-control" id="address" name="address" required>
+               <label for="address">Địa chỉ:</label>
+               <input type="text" class="form-control" id="address" name="dia_chi">
             </div>
          </div>
 
-         <h4>Thông Tin Khám Bệnh:</h4>
+         <h4>Thông tin khám bệnh:</h4>
          <div class="row mb-3">
             <div class="col-md-6">
-               <label for="appointment_date">Ngày Mong Muốn Khám:</label>
-               <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
+               <label for="appointment_date">Ngày mong muốn khám: <span class="text-danger">*</span></label>
+               <input type="date" class="form-control" id="appointment_date" name="ngay_hen">
+               <span class="text-danger" id="appointmentDateError"></span>
             </div>
             <div class="col-md-6">
-               <label for="appointment_time">Giờ Mong Muốn Khám:</label>
-               <input type="time" class="form-control" id="appointment_time" name="appointment_time" required>
+               <label>Buổi mong muốn khám: <span class="text-danger"></span></label>
+               <div class="form-check">
+                  <input type="radio" class="form-check-input" id="morning_session" name="buoi_hen" value="Sáng">
+                  <label class="form-check-label" for="morning_session">Sáng (08:00 - 12:00)</label>
+               </div>
+               <div class="form-check">
+                  <input type="radio" class="form-check-input" id="afternoon_session" name="buoi_hen" value="Chiều">
+                  <label class="form-check-label" for="afternoon_session">Chiều (13:00 - 17:00)</label>
+               </div>
             </div>
          </div>
          <div class="mb-3">
-            <label for="reason">Lý Do Khám:</label>
-            <input type="text" class="form-control" id="reason" name="reason" required>
+            <label for="reason">Lý do khám:</label>
             <div class="form-check">
-               <input type="checkbox" class="form-check-input" id="general_checkup" name="reason_type"
+               <input type="checkbox" class="form-check-input" id="general_checkup" name="ghi_chu"
                   value="Khám tổng quát">
                <label class="form-check-label" for="general_checkup">Khám tổng quát</label>
             </div>
             <div class="form-check">
-               <input type="checkbox" class="form-check-input" id="cavity_check" name="reason_type" value="Răng sâu">
+               <input type="checkbox" class="form-check-input" id="cavity_check" name="ghi_chu" value="Răng sâu">
                <label class="form-check-label" for="cavity_check">Răng sâu</label>
             </div>
             <div class="form-check">
-               <input type="checkbox" class="form-check-input" id="braces_check" name="reason_type" value="Niềng răng">
+               <input type="checkbox" class="form-check-input" id="braces_check" name="ghi_chu" value="Niềng răng">
                <label class="form-check-label" for="braces_check">Niềng răng</label>
             </div>
             <div class="form-check">
-               <input type="checkbox" class="form-check-input" id="other_check" name="reason_type" value="Khác">
+               <input type="checkbox" class="form-check-input" id="other_check" name="ghi_chu_khac" value="Khác">
                <label class="form-check-label" for="other_check">Khác (vui lòng ghi rõ):</label>
-               <input type="text" class="form-control mt-1" id="other_reason" name="other_reason">
+               <input type="text" class="form-control mt-1" id="other_reason" name="ghi_chu">
             </div>
-         </div>
-         <div class="mb-3">
-            <label for="medical_history">Lịch Sử Bệnh Lý (nếu có):</label>
-            <textarea class="form-control" id="medical_history" name="medical_history" rows="3"></textarea>
-         </div>
-
-         <h4>Xác Nhận Đặt Lịch:</h4>
-         <div class="form-check mb-3">
-            <input type="checkbox" class="form-check-input" id="confirmation" name="confirmation" required>
-            <label class="form-check-label" for="confirmation">Tôi xác nhận rằng thông tin trên là chính xác và tôi đồng
-               ý với các điều khoản của phòng khám.</label>
-         </div>
-         <div class="mb-3">
-            <label for="signature">Chữ Ký:</label>
-            <input type="text" class="form-control" id="signature" name="signature" required>
          </div>
 
          <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary bg-light-blue bd-lightblue">Đặt Lịch Ngay</button>
+            <button type="submit" class="btn btn-primary bg-light-blue bd-lightblue">Đặt lịch ngay</button>
          </div>
       </form>
    </div>
 </section>
+
+
+<script>
+   document.getElementById('appointmentForm').addEventListener('submit', function (event) {
+      // Prevent form submission
+      event.preventDefault();
+
+      // Clear previous error messages
+      document.getElementById('nameError').innerText = '';
+      document.getElementById('dobError').innerText = '';
+      document.getElementById('phoneError').innerText = '';
+      document.getElementById('appointmentDateError').innerText = '';
+      const notification = document.getElementById('notification');
+      notification.classList.add('d-none');
+
+      // Validate phone number
+      const phoneInput = document.getElementById('phone');
+      if (phoneInput) {
+         const phonePattern = /^0\d{9}$/;
+         if (!phonePattern.test(phoneInput.value)) {
+            document.getElementById('phoneError').innerText = 'Số điện thoại không hợp lệ';
+            return;
+         }
+      }
+
+      // Validate date of birth
+      const dobInput = document.getElementById('dob');
+      if (dobInput) {
+         const dob = new Date(dobInput.value);
+         if (dob >= new Date()) {
+            document.getElementById('dobError').innerText = 'Ngày sinh không hợp lệ';
+            return;
+         }
+      }
+
+      const appointmentDateInput = document.getElementById('appointment_date');
+      const appointmentDate = new Date(appointmentDateInput.value);
+      const today = new Date();
+      if (appointmentDate <= today) {
+         document.getElementById('appointmentDateError').innerText = 'Ngày hẹn không hợp lệ';
+         return;
+      }
+
+      const data = {
+         ho_ten: document.getElementById('name').value,
+         ngay_sinh: document.getElementById('dob').value,
+         so_dien_thoai: document.getElementById('phone').value,
+         email: document.getElementById('email').value,
+         dia_chi: document.getElementById('address').value,
+         ngay_hen: document.getElementById('appointment_date').value,
+         ghi_chu: [...document.querySelectorAll('input[name="ghi_chu"]:checked')].map(el => el.value)
+      };
+
+      fetch('/api/lichhen', {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify(data),
+      })
+         .then(response => response.json())
+         .then(data => {
+            if (data.status === 'success') {
+               notification.className = 'alert alert-success';
+               notification.innerText = 'Đặt lịch thành công!';
+               notification.classList.remove('d-none');
+               this.reset(); 
+            } else {
+               notification.className = 'alert alert-danger';
+               notification.innerText = 'Có lỗi xảy ra, vui lòng thử lại!';
+               notification.classList.remove('d-none'); 
+            }
+         })
+         .catch(error => {
+            console.error('Error:', error);
+            notification.className = 'alert alert-danger';
+            notification.innerText = 'Có lỗi xảy ra, vui lòng thử lại!';
+            notification.classList.remove('d-none');
+         });
+   });
+</script>

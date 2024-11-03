@@ -1,5 +1,5 @@
 const { DichVu, LoaiDichVu, BacSi, LichLamViec, LichHen, BenhNhan, ChiTietLichHen, sequelize } = require('../models/index')
-const { runChat } = require('../../gemini')
+const { runChat } = require('../config/gemini.config')
 
 
 module.exports = {

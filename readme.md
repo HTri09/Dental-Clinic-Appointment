@@ -10,6 +10,10 @@
 ## Giới Thiệu
 Hệ Thống Đặt Lịch Hẹn Nha Khoa là một ứng dụng web được thiết kế để hỗ trợ quản lý các cuộc hẹn tại phòng khám nha khoa. Ứng dụng cho phép bệnh nhân đặt lịch hẹn mới, chỉnh sửa hoặc hủy lịch hẹn, và cung cấp công cụ cho nhân viên để quản lý lịch trình hiệu quả.
 
+## Hướng Dẫn Tạo Tệp .env
+
+Để cấu hình ứng dụng, bạn cần tạo tệp `.env` chứa các biến môi trường. Làm theo các bước sau để tạo tệp `.env` từ tệp mẫu `.env.example`:
+
 ## Cài Đặt
 
 **Yêu cầu môi trường: Node.js 18.20.4**
@@ -32,10 +36,6 @@ Hệ Thống Đặt Lịch Hẹn Nha Khoa là một ứng dụng web được th
     ```bash
     npm start
     ```
-
-## Hướng Dẫn Tạo Tệp .env
-
-Để cấu hình ứng dụng, bạn cần tạo tệp `.env` chứa các biến môi trường. Làm theo các bước sau để tạo tệp `.env` từ tệp mẫu `.env.example`:
 
 ### Bước 1: Tạo tệp .env từ tệp mẫu
 Sử dụng lệnh sau trong terminal:

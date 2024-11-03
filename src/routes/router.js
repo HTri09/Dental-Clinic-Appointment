@@ -19,8 +19,12 @@ router.get('/api/getAllBacSiInfo', retrieveDataController.getAllBacSiInfo)
 // Chatbot
 router.post('/api/chat', chatbotController.chat)
 
-// Appointment
 
+// Appointment
+router.post('/api/lichhen', appoinmentController.createAppointment)
+
+
+// Health check
 router.get('/health', (req, res) => {
     res.status(200).json({ status: 'UP' })
 })

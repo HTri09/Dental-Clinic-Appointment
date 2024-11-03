@@ -17,29 +17,28 @@ module.exports = (sequelize, DataTypes) => {
     ma_lich_hen: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true,
-      allowNull: false,
+      autoIncrement: true
     },
     ghi_chu: {
-      type: DataTypes.STRING(50),
-      allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: true
     },
     trang_thai: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: false
     },
     ngay_hen: {
-      type: DataTypes.DATE,
-      allowNull: false,
+      type: DataTypes.DATEONLY,
+      allowNull: false
     },
     ma_nguoi_dung: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true
     },
     ma_benh_nhan: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+      allowNull: false
+    }
   }, {
     sequelize,
     modelName: 'LichHen',
