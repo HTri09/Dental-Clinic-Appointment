@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --inspect index.js"
+    "dev": "nodemon --inspect index.js",
+    "start": "node index.js"
   },
+  "nodemonConfig": {
+    "watch": ["*.ejs", "*.js"]
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",
