@@ -80,6 +80,14 @@ const runChat = async (userInput) => {
                 role: "model",
                 parts: [{ text: "##  Giá trung bình các dịch vụ tại Phòng khám Nha khoa Dental Clinic:\n\n**Khám - Hồ sơ:** 5.000 đồng\n\n**Răng:** 122.857 đồng\n\n**Nha chu:** 342.857 đồng\n\n**Điều trị:** 335.000 đồng\n\n**Phục hình tháo lắp:** 1.000.000 đồng\n\n**Phục hình cố định:** 2.161.905 đồng\n\n**Trẻ em:** 744.444 đồng\n\n**Nắn chỉnh:** 11.611.111 đồng\n\n**Phòng ngừa:** 200.000 đồng\n\n**Điều trị nghiến răng:** 650.000 đồng\n\n**Chụp X-quang:** 130.000 đồng\n\n**Cấy ghép Implant:** 24.766.667 đồng\n\n**Phục hình trên Implant:** 8.444.444 đồng\n\n**Toàn hàm Implant:** 138.333.333 đồng\n\n**Lưu ý:**\n\n* Giá dịch vụ có thể thay đổi tùy theo tình trạng cụ thể của mỗi bệnh nhân. \n* Để biết thêm thông tin chi tiết về giá dịch vụ, vui lòng liên hệ trực tiếp với Phòng khám Nha khoa Dental Clinic." }],
             },
+            {
+                role: "user",
+                parts: [{"text": "Đây là thông tin về lịch làm việc, địa chỉ và số điện thoại: từ 8-12h và 13-17h các ngày trong tuần, nghỉ ngày lễ; địa chỉ: 19 Nguyễn Hữu Thọ, P. Tân Phong, Quận 7, TP. Hồ Chí Minh; sđt: 0123456789; Khi được hỏi hãy trả lời theo thông tin này"}]
+            },
+            {
+                role: "model",
+                parts: [{"text": "## Thông tin liên lạc và lịch làm việc của Phòng khám Nha khoa Dental Clinic:\n\n**Địa chỉ:** 19 Nguyễn Hữu Thọ, P. Tân Phong, Quận 7, TP. Hồ Chí Minh\n\n**Số điện thoại:** 0123456789\n\n**Lịch làm việc:** \n\n* Từ 8h - 12h và 13h - 17h các ngày trong tuần.\n* Nghỉ ngày lễ. \n\nChúng tôi rất hân hạnh được chào đón bạn đến với Phòng khám! 😊"}]
+            },
         ],
 
     })
